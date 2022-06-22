@@ -1,0 +1,23 @@
+{
+  "name": "example-list-films",
+  "description": "Form for insert film, list, edit and delete",
+  "version": "0.0.1",
+  "author": "Andrea Falcon",
+  "main": "server.js",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongodb": "^4.7.0",
+    "mongoose": "^6.4.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "node",
+    "mongoose",
+    "express",
+    "example"
+  ],
+  "license": "MIT"
+}
