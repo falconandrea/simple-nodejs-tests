@@ -5,9 +5,9 @@ const getList = async () => {
   return films ?? []
 }
 
-const newFilm = (data) => {
+const newFilm = async (data) => {
   const film = new Film(data)
-  return film.save()
+  return await film.save()
 }
 
 const findById = async (id) => {
