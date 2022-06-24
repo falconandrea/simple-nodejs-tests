@@ -1,7 +1,8 @@
 # List Films
 
-Using Moongose/MongoDB for save a list of films (title and year). List for show all films in DB, and simple for for add new films.
-I used EJS templating and Tailwind for create the list and the form.
+- Moongose/MongoDB for save a list of films (title and year)
+- Express for routing
+- EJS templating and TailwindCSS for create the table list for show all films in DB, and a simple popup with a form for add new films.
 
 ## For start in local
 
