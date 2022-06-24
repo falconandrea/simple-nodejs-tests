@@ -11,7 +11,7 @@ cp .env.example .env
 # Change MongoDB connection in .env file
 
 npm install
-npm run start
+npm start
 ```
 
 Open `localhost:3000` for see the application.
