@@ -12,3 +12,5 @@ cp .env.example .env
 npm install
 npm run start
 ```
+
+Open `localhost:3000` for see the application.
