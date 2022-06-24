@@ -1,6 +1,6 @@
 # NodeJs Tests
 
-Some simple exercises for test knowledges learned during the NodeJs courses that i'm following.
+Some simple exercises for test knowledges learned during the NodeJs courses that I'm following.
 
 ## List Films
 
