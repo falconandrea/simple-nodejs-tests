@@ -14,4 +14,6 @@ app.use(urlEncodedParser)
 
 app.use('/', mainRoutes)
 
-app.listen(3000)
+app.listen(PORT = process.env.PORT || 3000, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
