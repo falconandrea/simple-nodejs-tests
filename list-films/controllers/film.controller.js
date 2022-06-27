@@ -2,7 +2,7 @@ const Film = require('../models/film.model')
 
 const getList = async () => {
   const films = await Film.find({})
-  return films ?? []
+  return films
 }
 
 const newFilm = async (data) => {
