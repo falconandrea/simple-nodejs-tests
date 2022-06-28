@@ -6,7 +6,6 @@ const filmController = require('../controllers/film.controller')
 
 router.get('/', async (req, res) => {
   const films = await filmController.getList()
-  console.log('refresh list')
   res.render('pages/list', {
     films
   })
