@@ -18,7 +18,7 @@
     "prettier": "prettier --write .",
     "eslint": "eslint --fix .",
     "start": "NODE_ENV=development node start.js",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test jest --coverage"
   },
   "jest": {
     "testEnvironment": "node",
