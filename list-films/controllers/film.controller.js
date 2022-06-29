@@ -46,7 +46,7 @@ const deleteFilmFromList = async (req, res) => {
   try {
     if (!req.params.id) throw new Error('Missing ID')
     const result = await deleteFilm(req.params.id)
-    if (result) res.redirect('/')
+    if (result) renderList(req, res)
     else throw new Error('Film not found')
   } catch (error) {
     console.log(error)
