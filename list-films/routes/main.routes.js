@@ -4,36 +4,10 @@ const router = express.Router()
 
 const filmController = require('../controllers/film.controller')
 
-router.get('/', async (req, res) => {
-  const films = await filmController.getList()
-  res.render('pages/list', {
-    films
-  })
-})
+router.get('/', filmController.renderList)
 
-router.post('/new-film', async (req, res) => {
-  try {
-    if (!req.body.year) throw new Error('Missing year')
-    if (!req.body.title) throw new Error('Missing title')
+router.post('/new-film', filmController.addNewFilmFromForm)
 
-    await filmController.newFilm(req.body)
-    res.redirect('/')
-  } catch (error) {
-    console.log(error)
-    res.status(500).send(error)
-  }
-})
-
-router.post('/delete-film/:id', async (req, res) => {
-  try {
-    if (!req.params.id) throw new Error('Missing ID')
-    const result = await filmController.deleteFilm(req.params.id)
-    if (result) res.redirect('/')
-    else throw new Error('Film not found')
-  } catch (error) {
-    console.log(error)
-    res.status(500).send(error)
-  }
-})
+router.post('/delete-film/:id', filmController.deleteFilmFromList)
 
 module.exports = router
