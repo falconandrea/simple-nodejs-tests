@@ -16,15 +16,11 @@ const newFilm = async (data) => {
   return await film.save()
 }
 const addNewFilmFromForm = async (req, res) => {
-  try {
-    if (!req.body.year) throw new Error('Missing year')
-    if (!req.body.title) throw new Error('Missing title')
+  if (!req.body.year) return res.status(500).send('Missing year')
+  if (!req.body.title) return res.status(500).send('Missing title')
 
-    await newFilm(req.body)
-    renderList(req, res)
-  } catch (error) {
-    res.status(500).send(error)
-  }
+  await newFilm(req.body)
+  renderList(req, res)
 }
 
 const findById = async (id) => {
@@ -43,15 +39,12 @@ const deleteFilm = async (id) => {
   } else return false
 }
 const deleteFilmFromList = async (req, res) => {
-  try {
-    if (!req.params.id) throw new Error('Missing ID')
-    const result = await deleteFilm(req.params.id)
-    if (result) renderList(req, res)
-    else throw new Error('Film not found')
-  } catch (error) {
-    console.log(error)
-    res.status(500).send(error)
-  }
+  if (!req.params.id) return res.status(500).send('Missing ID')
+
+  const result = await deleteFilm(req.params.id)
+  if (!result) res.status(500).send('Film not found')
+
+  renderList(req, res)
 }
 
 module.exports = {
