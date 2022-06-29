@@ -29,18 +29,21 @@ const findById = async (id) => {
   if (film) return film
   else return null
 }
+const findByTitle = async (title) => {
+  const film = await Film.findOne({ title })
+
+  return film ?? null
+}
 
 const deleteFilm = async (id) => {
   const film = await findById(id)
 
   if (film) {
-    film.delete()
+    await film.delete()
     return true
   } else return false
 }
 const deleteFilmFromList = async (req, res) => {
-  if (!req.params.id) return res.status(500).send('Missing ID')
-
   const result = await deleteFilm(req.params.id)
   if (!result) res.status(500).send('Film not found')
 
@@ -50,6 +53,7 @@ const deleteFilmFromList = async (req, res) => {
 module.exports = {
   getList,
   renderList,
+  findByTitle,
   newFilm,
   addNewFilmFromForm,
   deleteFilm,
