@@ -1,5 +1,6 @@
-const app = require('../server')
 const supertest = require('supertest')
+const app = require('../server')
+
 const request = supertest(app)
 
 describe('Test front-end endpoints', () => {
