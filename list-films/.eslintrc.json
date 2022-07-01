@@ -2,7 +2,9 @@
   "env": {
     "commonjs": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true,
+    "browser": true
   },
   "extends": ["airbnb-base", "prettier", "plugin:node/recommended"],
   "globals": {
@@ -20,14 +22,13 @@
     "func-names": "off",
     "no-plusplus": "off",
     "no-process-exit": "off",
-    "class-methods-use-this": "off"
-  },
-  "overrides": [
-    {
-      "files": ["**/*.spec.js", "**/*.spec.jsx"],
-      "env": {
-        "jest": true
+    "class-methods-use-this": "off",
+    "global-require": "off",
+    "node/no-unpublished-require": [
+      "error",
+      {
+        "allowModules": ["supertest"]
       }
-    }
-  ]
+    ]
+  }
 }

@@ -19,4 +19,5 @@ form.addEventListener('submit', (event) => {
     return true
   }
   event.preventDefault()
+  return false
 })

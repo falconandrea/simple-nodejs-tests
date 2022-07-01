@@ -1,7 +1,5 @@
-const supertest = require('supertest')
+const request = require('supertest')
 const app = require('../server')
-
-const request = supertest(app)
 
 describe('Test front-end endpoints', () => {
   beforeAll(async () => {
@@ -11,21 +9,26 @@ describe('Test front-end endpoints', () => {
     await Film.deleteMany({}).exec()
 
     // Insert film for test list endpoint
-    const rest = await request
+    await request
+      .agent(app)
       .post('/new-film')
       .send('title=Random string test&year=9999')
   })
 
   it('list films', async () => {
-    const res = await request.get('/').expect((response) => {
-      expect(response.status).toBe(200)
-      expect(response.type).toBe('text/html')
-      expect(response.text).toContain('Random string test')
-    })
+    await request
+      .agent(app)
+      .get('/')
+      .expect((response) => {
+        expect(response.status).toBe(200)
+        expect(response.type).toBe('text/html')
+        expect(response.text).toContain('Random string test')
+      })
   })
 
   it('add new film', async () => {
-    const res = await request
+    await request
+      .agent(app)
       .post('/new-film')
       .send('title=New film test&year=2021')
       .expect((response) => {
@@ -37,7 +40,8 @@ describe('Test front-end endpoints', () => {
   })
 
   it('add new film without year', async () => {
-    const res = await request
+    await request
+      .agent(app)
       .post('/new-film')
       .send('title=Film without year')
       .expect((response) => {
@@ -47,7 +51,8 @@ describe('Test front-end endpoints', () => {
   })
 
   it('add new film without title', async () => {
-    const res = await request
+    await request
+      .agent(app)
       .post('/new-film')
       .send('year=1980')
       .expect((response) => {
@@ -61,7 +66,8 @@ describe('Test front-end endpoints', () => {
     const filmController = require('../controllers/film.controller')
     const film = await filmController.findByTitle(titleFilm)
 
-    const res = await request
+    await request
+      .agent(app)
       .post(`/delete-film/${film.id}`)
       .expect((response) => {
         expect(response.status).toBe(200)
@@ -70,7 +76,8 @@ describe('Test front-end endpoints', () => {
   })
 
   it('delete a film with wrong id', async () => {
-    const res = await request
+    await request
+      .agent(app)
       .post('/delete-film/62bc8747de2202dba8904293')
       .expect((response) => {
         expect(response.status).toBe(500)

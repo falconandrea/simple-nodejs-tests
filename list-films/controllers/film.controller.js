@@ -20,7 +20,7 @@ const addNewFilmFromForm = async (req, res) => {
   if (!req.body.title) return res.status(500).send('Missing title')
 
   await newFilm(req.body)
-  renderList(req, res)
+  return renderList(req, res)
 }
 
 const findById = async (id) => {
