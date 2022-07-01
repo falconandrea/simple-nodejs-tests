@@ -13,7 +13,7 @@ const renderList = async (req, res) => {
 
 const newFilm = async (data) => {
   const film = new Film(data)
-  return await film.save()
+  return film.save()
 }
 const addNewFilmFromForm = async (req, res) => {
   if (!req.body.year) return res.status(500).send('Missing year')
@@ -27,12 +27,12 @@ const findById = async (id) => {
   const film = await Film.findById(id)
 
   if (film) return film
-  else return null
+  return null
 }
 const findByTitle = async (title) => {
   const film = await Film.findOne({ title })
 
-  return film ?? null
+  return film || null
 }
 
 const deleteFilm = async (id) => {
@@ -41,7 +41,8 @@ const deleteFilm = async (id) => {
   if (film) {
     await film.delete()
     return true
-  } else return false
+  }
+  return false
 }
 const deleteFilmFromList = async (req, res) => {
   const result = await deleteFilm(req.params.id)
