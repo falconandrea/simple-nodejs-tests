@@ -12,6 +12,11 @@ modalBtnClose.addEventListener('click', () => {
 })
 
 form.addEventListener('submit', (event) => {
-  if (document.getElementById('yearFilm').value !== '' && document.getElementById('titleFilm').value !== '') return true
+  if (
+    document.getElementById('yearFilm').value !== '' &&
+    document.getElementById('titleFilm').value !== ''
+  ) {
+    return true
+  }
   event.preventDefault()
 })
