@@ -1,6 +1,6 @@
 {
-  "name": "url-shorter",
-  "description": "Simple URL Shorter",
+  "name": "url-shortener",
+  "description": "Simple URL Shortener",
   "version": "0.0.1",
   "author": "Andrea Falcon",
   "main": "start.js",
