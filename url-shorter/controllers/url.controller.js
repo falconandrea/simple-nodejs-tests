@@ -4,6 +4,19 @@ const getList = async (req, res) => {
   const list = await URL.find({}).select(['originalUrl', 'code'])
   return res.json(list)
 }
+const redirectUrl = async (req, res) => {
+  const data = await findByCode(req.params.code)
+  return res.redirect(data.originalUrl)
+}
+
+const generateRandomCode = (length) => {
+  let randomString = ''
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  for (let i = 0; i < length; i++) {
+    randomString += characters.charAt(Math.floor(Math.random() * characters.length))
+  }
+  return randomString
+}
 
 const create = async (req, res) => {
   if (!req.body.originalUrl) {
@@ -11,17 +24,21 @@ const create = async (req, res) => {
   }
 
   // Create random code
-  const code = ''
+  let code = ''
+  do code = generateRandomCode(10)
+  while (await findByCode(code))
 
   const url = new URL({
     originalUrl: req.body.originalUrl,
-    code
+    code: code
   })
+
   return url.save((err, data) => {
     if (err) return res.status(500).send(err)
     return res.json({
       originalUrl: data.originalUrl,
       code: data.code,
+      shortUrl: `${process.env.URL_DOMAIN}:${process.env.PORT}/${data.code}` || 'http://localhost:3000',
       id: data._id
     })
   })
@@ -53,5 +70,6 @@ module.exports = {
   findByCode,
   findByOriginalURL,
   create,
+  redirectUrl,
   remove
 }
