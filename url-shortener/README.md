@@ -1,6 +1,6 @@
 # URL Shortener
 
-![URL Shortener gif](https://raw.githubusercontent.com/falconandrea/simple-nodejs-tests/main/images/url-hortener.gif)
+![URL Shortener gif](https://raw.githubusercontent.com/falconandrea/simple-nodejs-tests/main/images/url-shortener.gif)
 
 - Moongose/MongoDB for save data
 - Express for routing
