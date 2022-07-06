@@ -12,7 +12,7 @@ form.addEventListener('submit', (event) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        originalUrl: originalUrl
+        originalUrl
       })
     })
       .then((res) => res.json())
