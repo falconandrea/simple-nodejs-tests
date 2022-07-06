@@ -1,0 +1,47 @@
+{
+  "name": "url-shorter",
+  "description": "Simple URL Shorter",
+  "version": "0.0.1",
+  "author": "Andrea Falcon",
+  "main": "start.js",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "jest": "^28.1.1",
+    "mongodb": "^4.7.0",
+    "mongoose": "^6.4.0",
+    "save-dev": "^0.0.1-security"
+  },
+  "scripts": {
+    "prettier": "prettier --write .",
+    "eslint": "eslint --fix .",
+    "start": "NODE_ENV=development node start.js",
+    "test": "NODE_ENV=test jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "keywords": [
+    "node",
+    "mongoose",
+    "express",
+    "example"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.1.0",
+    "prettier": "^2.7.1",
+    "supertest": "^6.2.3"
+  }
+}
