@@ -14,7 +14,7 @@ Using:
 - Using Prettier and Eslint
 - Test code with Jest.
 
-## [URL Shortener](https://github.com/falconandrea/simple-nodejs-tests/tree/main/url-shorter)
+## [URL Shortener](https://github.com/falconandrea/simple-nodejs-tests/tree/main/url-shortener)
 
 Simple URL Shortener for shorten an url.
 
