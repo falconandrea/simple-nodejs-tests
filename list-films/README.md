@@ -2,11 +2,11 @@
 
 ![List films gif](https://raw.githubusercontent.com/falconandrea/simple-nodejs-tests/main/images/list-films.gif)
 
-- Moongose/MongoDB for save a list of films (title and year)
-- Express for routing
-- EJS templating and TailwindCSS for create the table list for show all films in DB, and a simple popup with a form for add new films
-- Using Prettier and Eslint
-- Test code with Jest.
+- Moongose/MongoDB
+- Express
+- EJS templating and TailwindCSS
+- Prettier and Eslint
+- Jest for testing.
 
 ## For start in local
 

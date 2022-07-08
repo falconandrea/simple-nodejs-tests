@@ -2,11 +2,11 @@
 
 ![URL Shortener gif](https://raw.githubusercontent.com/falconandrea/simple-nodejs-tests/main/images/url-shortener.gif)
 
-- Moongose/MongoDB for save data
-- Express for routing
-- EJS templating and TailwindCSS the layout
-- Using Prettier and Eslint
-- Test code with Jest.
+- Moongose/MongoDB
+- Express
+- EJS templating and TailwindCSS
+- Prettier and Eslint
+- Jest for testing.
 
 ## For start in local
 
