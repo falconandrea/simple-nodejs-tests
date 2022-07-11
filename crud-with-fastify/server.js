@@ -3,5 +3,6 @@ const fastify = require('fastify')({
 })
 
 fastify.register(require('./db.connection'))
+fastify.register(require('./routes/author.routes'))
 
 module.exports = fastify
