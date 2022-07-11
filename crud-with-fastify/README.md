@@ -5,7 +5,7 @@
 - Moongose/MongoDB
 - Fastify
 - Prettier and Eslint
-- Jest for testing.
+- Tap for testing.
 
 ## For start in local
 
@@ -20,7 +20,7 @@ npm run start
 npm run eslint
 npm run prettier
 
-# Run test with Jest
+# Run test with Tap
 npm run test
 ```
 
