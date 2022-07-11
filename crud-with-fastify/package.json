@@ -1,0 +1,44 @@
+{
+  "name": "simple-crud-fastify",
+  "description": "A simple CRUD with Fastify",
+  "version": "0.0.1",
+  "author": "Andrea Falcon",
+  "main": "start.js",
+  "dependencies": {
+    "@fastify/env": "^4.0.0",
+    "@fastify/mongodb": "^6.0.1",
+    "dotenv": "^16.0.1",
+    "fastify": "^4.2.0",
+    "fastify-plugin": "^3.0.1",
+    "jest": "^28.1.1",
+    "save-dev": "^0.0.1-security"
+  },
+  "scripts": {
+    "prettier": "prettier --write .",
+    "eslint": "eslint --fix .",
+    "start": "NODE_ENV=development node start.js",
+    "test": "NODE_ENV=test jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "keywords": [
+    "node",
+    "fastify",
+    "example"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.18.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-node": "^4.1.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.1.0",
+    "prettier": "^2.7.1",
+    "supertest": "^6.2.3"
+  }
+}
