@@ -1,31 +1,33 @@
+const { ObjectId } = require('@fastify/mongodb')
+
 const list = async (req, res) => {
   const collection = req.server.mongo.db.collection('authors')
   const data = await collection.find().toArray() || []
-  return res.json(data)
+  return res.send(data)
 }
 
 const create = async (req, res) => {
-  if (!req.body.name) return res.status(500).send('Missing name')
-  if (!req.body.surname) return res.status(500).send('Missing surname')
+  if (!req.body.name) throw Error('Missing name')
+  if (!req.body.surname) throw Error('Missing surname')
 
   const collection = req.server.mongo.db.collection('authors')
+  const { name, surname } = req.body
   const result = await collection.insertOne({
-    name: req.body.name,
-    surname: req.body.surname
+    name,
+    surname
   })
 
-  return res.json(result)
+  return res.send({ id: result.insertedId })
 }
 
 const remove = async (req, res) => {
   const collection = req.server.mongo.db.collection('authors')
-  const data = await collection.findOne({ id: req.params.id })
+  const data = await collection.findOne({ _id: new ObjectId(req.params.id) })
 
-  if (data) {
-    await collection.deleteOne(data)
-    return res.json({ message: 'Deleted' })
-  }
-  return res.status(404).send('Item not found')
+  if (!data) throw new Error('Item not found')
+
+  await collection.deleteOne(data)
+  return res.send({ message: 'Deleted' })
 }
 
 module.exports = {
