@@ -11,6 +11,7 @@ async function routes (fastify, options) {
       surname: { type: 'string' }
     }
   }
+  fastify.get('author/:id', controller.get)
   fastify.post('author', { body: bodyJsonSchema }, controller.create)
   fastify.delete('author/:id', controller.remove)
 }
