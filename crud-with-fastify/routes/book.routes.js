@@ -1,6 +1,6 @@
 const controller = require('../controllers/book.controller')
 
-async function routes(fastify, options) {
+async function routes (fastify, options) {
   fastify.get(
     'book',
     {
@@ -11,11 +11,19 @@ async function routes(fastify, options) {
           200: {
             description: 'Successful response',
             type: 'array',
-            properties: {
-              _id: { type: 'string', description: 'entity id' },
-              title: { type: 'string' },
-              year: { type: 'number' },
-              authors: { type: 'array' }
+            items: {
+              type: 'object',
+              properties: {
+                _id: { type: 'string', description: 'entity id' },
+                title: { type: 'string' },
+                year: { type: 'number' },
+                authors: {
+                  type: 'array',
+                  items: {
+                    type: 'string'
+                  }
+                }
+              }
             }
           }
         }
@@ -47,7 +55,7 @@ async function routes(fastify, options) {
               _id: { type: 'string', description: 'entity id' },
               title: { type: 'string' },
               year: { type: 'number' },
-              authors: { type: 'array' }
+              authors: { type: 'array', items: { type: 'string' } }
             }
           }
         }
@@ -62,7 +70,7 @@ async function routes(fastify, options) {
     properties: {
       title: { type: 'string' },
       year: { type: 'number' },
-      authors: { type: 'array' }
+      authors: { type: 'array', items: { type: 'string' } }
     }
   }
   fastify.post(

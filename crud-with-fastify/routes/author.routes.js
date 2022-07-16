@@ -11,10 +11,13 @@ async function routes (fastify, options) {
           200: {
             description: 'Successful response',
             type: 'array',
-            properties: {
-              _id: { type: 'string', description: 'entity id' },
-              name: { type: 'string' },
-              surname: { type: 'string' }
+            items: {
+              type: 'object',
+              properties: {
+                _id: { type: 'string', description: 'entity id' },
+                name: { type: 'string' },
+                surname: { type: 'string' }
+              }
             }
           }
         }
