@@ -2,6 +2,8 @@
 
 ![List films gif](https://raw.githubusercontent.com/falconandrea/simple-nodejs-tests/main/images/crud-fastify.gif)
 
+Simple CRUD for manage Authors and Books.
+
 - Moongose/MongoDB
 - Fastify
 - Prettier and Eslint
