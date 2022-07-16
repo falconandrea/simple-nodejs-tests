@@ -75,7 +75,10 @@ tap.only('books tests', async (t) => {
     })
 
     test.equal(response.statusCode, 400)
-    test.equal(response.json().message, "body must have required property 'year'")
+    test.equal(
+      response.json().message,
+      "body must have required property 'year'"
+    )
   })
 
   t.test('create new book with missing field', async (test) => {
