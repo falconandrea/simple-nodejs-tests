@@ -1,8 +1,6 @@
 # A simple CRUD with Fastify
 
-![List films gif](https://raw.githubusercontent.com/falconandrea/simple-nodejs-tests/main/images/crud-fastify.gif)
-
-Simple CRUD for manage Authors and Books.
+Simple CRUD for manage Authors and Books with Fastify.
 
 - Moongose/MongoDB
 - Fastify

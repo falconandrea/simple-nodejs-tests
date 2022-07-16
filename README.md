@@ -25,3 +25,15 @@ Using:
 - EJS templating and TailwindCSS
 - Prettier and Eslint
 - Jest for testing.
+
+## [CRUD Fastify](https://github.com/falconandrea/simple-nodejs-tests/tree/main/crud-with-fastify)
+
+Simple CRUD for manage Authors and Books with Fastify.
+
+Using:
+
+- Moongose/MongoDB
+- Fastify
+- Prettier and Eslint
+- Swagger documentation with Fastify plugin
+- Tap for testing.
