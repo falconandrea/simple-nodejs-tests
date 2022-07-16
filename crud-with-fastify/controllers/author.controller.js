@@ -2,7 +2,7 @@ const { ObjectId } = require('@fastify/mongodb')
 
 const list = async (req, res) => {
   const collection = req.server.mongo.db.collection('authors')
-  const data = await collection.find().toArray() || []
+  const data = (await collection.find().toArray()) || []
   return res.send(data)
 }
 

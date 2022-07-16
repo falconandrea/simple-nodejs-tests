@@ -8,28 +8,28 @@ t.before(() => {
     if (error) console.log(error)
 
     const db = client.db('fastify-test')
-    db.collection('authors').deleteMany({}, (error, result) => {
-      if (error) console.log(error)
+    db.collection('authors').deleteMany({}, (err, result) => {
+      if (err) console.log(err)
     })
   })
 })
 
 /* LIST WITHOUT DATA */
-t.test('get list without data', async t => {
-  t.plan(2)
+t.test('get list without data', async (test) => {
+  test.plan(2)
 
   const response = await app.inject({
     method: 'GET',
     url: '/api/author'
   })
 
-  t.equal(response.statusCode, 200)
-  t.equal(response.json().length, 0)
+  test.equal(response.statusCode, 200)
+  test.equal(response.json().length, 0)
 })
 
 /* CREATE */
-t.test('create new author', async t => {
-  t.plan(2)
+t.test('create new author', async (test) => {
+  test.plan(2)
 
   const response = await app.inject({
     method: 'POST',
@@ -40,12 +40,12 @@ t.test('create new author', async t => {
     }
   })
 
-  t.equal(response.statusCode, 200)
-  t.ok(response.json().id, 'insertedId returned')
+  test.equal(response.statusCode, 200)
+  test.ok(response.json().id, 'insertedId returned')
 })
 
-t.test('create new author with missing field', async t => {
-  t.plan(2)
+t.test('create new author with missing field', async (test) => {
+  test.plan(2)
 
   const response = await app.inject({
     method: 'POST',
@@ -55,12 +55,12 @@ t.test('create new author with missing field', async t => {
     }
   })
 
-  t.equal(response.statusCode, 500)
-  t.equal(response.json().message, 'Missing name')
+  test.equal(response.statusCode, 500)
+  test.equal(response.json().message, 'Missing name')
 })
 
-t.test('create new author with missing field', async t => {
-  t.plan(2)
+t.test('create new author with missing field', async (test) => {
+  test.plan(2)
 
   const response = await app.inject({
     method: 'POST',
@@ -70,26 +70,26 @@ t.test('create new author with missing field', async t => {
     }
   })
 
-  t.equal(response.statusCode, 500)
-  t.equal(response.json().message, 'Missing surname')
+  test.equal(response.statusCode, 500)
+  test.equal(response.json().message, 'Missing surname')
 })
 
 /* LIST */
-t.test('get list', async t => {
-  t.plan(2)
+t.test('get list', async (test) => {
+  test.plan(2)
 
   const response = await app.inject({
     method: 'GET',
     url: '/api/author'
   })
 
-  t.equal(response.statusCode, 200)
-  t.equal(response.json().length, 1)
+  test.equal(response.statusCode, 200)
+  test.equal(response.json().length, 1)
 })
 
 /* GET */
-t.test('get detail', async t => {
-  t.plan(2)
+t.test('get detail', async (test) => {
+  test.plan(2)
 
   const response = await app.inject({
     method: 'GET',
@@ -103,37 +103,37 @@ t.test('get detail', async t => {
     url: `/api/author/${id}`
   })
 
-  t.equal(detail.statusCode, 200)
-  t.equal(detail.json()._id, id)
+  test.equal(detail.statusCode, 200)
+  test.equal(detail.json()._id, id)
 })
 
-t.test('get detail not in db', async t => {
-  t.plan(2)
+t.test('get detail not in db', async (test) => {
+  test.plan(2)
 
   const data = '12a34b2392cfee8293d12345'
   const response = await app.inject({
     method: 'GET',
     url: `/api/author/${data}`
   })
-  t.equal(response.statusCode, 500)
-  t.equal(response.json().message, 'Item not found')
+  test.equal(response.statusCode, 500)
+  test.equal(response.json().message, 'Item not found')
 })
 
 /* REMOVE */
-t.test('try to remove an element not in db', async t => {
-  t.plan(2)
+t.test('try to remove an element not in db', async (test) => {
+  test.plan(2)
 
   const userToDelete = '12a34b2392cfee8293d12345'
   const response = await app.inject({
     method: 'DELETE',
     url: `/api/author/${userToDelete}`
   })
-  t.equal(response.statusCode, 500)
-  t.equal(response.json().message, 'Item not found')
+  test.equal(response.statusCode, 500)
+  test.equal(response.json().message, 'Item not found')
 })
 
-t.test('remove item', async t => {
-  t.plan(2)
+t.test('remove item', async (test) => {
+  test.plan(2)
 
   const response = await app.inject({
     method: 'GET',
@@ -147,6 +147,6 @@ t.test('remove item', async t => {
     url: `/api/author/${id}`
   })
 
-  t.equal(detail.statusCode, 200)
-  t.match(detail.json(), { message: 'Deleted' })
+  test.equal(detail.statusCode, 200)
+  test.match(detail.json(), { message: 'Deleted' })
 })

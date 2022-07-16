@@ -15,7 +15,7 @@
   },
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "no-unused-vars": "warn",
     "no-console": "off",
     "func-names": "off",
@@ -23,12 +23,13 @@
     "no-process-exit": "off",
     "class-methods-use-this": "off",
     "global-require": "off",
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "space-before-function-paren": ["error", "always"],
     "node/no-unpublished-require": [
       "error",
       {
-        "allowModules": ["supertest"]
+        "allowModules": ["tap"]
       }
-    ],
-    "no-underscore-dangle": ["error", { "allow": ["_id"] }]
+    ]
   }
 }
