@@ -8,7 +8,7 @@ async function routes (fastify, options) {
       response: {
         200: {
           description: 'Successful response',
-          type: 'object',
+          type: 'array',
           properties: {
             _id: { type: 'string', description: 'entity id' },
             name: { type: 'string' },
