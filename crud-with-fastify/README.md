@@ -7,6 +7,7 @@ Simple CRUD for manage Authors and Books.
 - Moongose/MongoDB
 - Fastify
 - Prettier and Eslint
+- Swagger documentation with Fastify plugin
 - Tap for testing.
 
 ## For start in local
@@ -27,19 +28,4 @@ npm run test
 ```
 
 Open `localhost:3000` for see the application.
-
-## API
-
-```
-# List authors
-GET api/author
-
-# Create new author
-POST api/author with payload { name: 'Name', surname: 'Surname' }
-
-# Get detail author
-GET api/author/:id
-
-# Delete an author
-DELETE api/author/:id
-```
+Open `localhost:3000/documentation` for see Swagger API documentation.
