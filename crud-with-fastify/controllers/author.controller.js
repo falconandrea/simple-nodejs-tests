@@ -7,9 +7,6 @@ const list = async (req, res) => {
 }
 
 const create = async (req, res) => {
-  if (!req.body.name) throw Error('Missing name')
-  if (!req.body.surname) throw Error('Missing surname')
-
   const collection = req.server.mongo.db.collection('authors')
   const { name, surname } = req.body
   const result = await collection.insertOne({
