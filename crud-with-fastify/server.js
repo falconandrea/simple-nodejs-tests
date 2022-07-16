@@ -20,5 +20,6 @@ fastify.register(require('@fastify/swagger'), {
 })
 
 fastify.register(require('./routes/author.routes'), { prefix: '/api/' })
+fastify.register(require('./routes/book.routes'), { prefix: '/api/' })
 
 module.exports = fastify
