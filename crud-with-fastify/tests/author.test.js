@@ -71,7 +71,10 @@ t.test('create new author with missing field', async (test) => {
   })
 
   test.equal(response.statusCode, 400)
-  test.equal(response.json().message, "body must have required property 'surname'")
+  test.equal(
+    response.json().message,
+    "body must have required property 'surname'"
+  )
 })
 
 /* LIST */
