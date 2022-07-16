@@ -25,3 +25,19 @@ npm run test
 ```
 
 Open `localhost:3000` for see the application.
+
+## API
+
+```
+# List authors
+GET api/author
+
+# Create new author
+POST api/author with payload { name: 'Name', surname: 'Surname' }
+
+# Get detail author
+GET api/author/:id
+
+# Delete an author
+DELETE api/author/:id
+```
