@@ -11,6 +11,8 @@ fastify.register(require('@fastify/swagger'), {
   swagger: {
     info: { title: 'Books and Authors API' }
   },
+  consumes: ['application/json'],
+  produces: ['application/json'],
   tags: [
     { name: 'author', description: 'Author endpoints' },
     { name: 'book', description: 'Books endpoints' }

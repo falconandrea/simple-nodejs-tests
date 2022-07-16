@@ -4,7 +4,18 @@ async function routes (fastify, options) {
   fastify.get('author', {
     schema: {
       description: 'Get list of authors',
-      tags: ['author']
+      tags: ['author'],
+      response: {
+        200: {
+          description: 'Successful response',
+          type: 'object',
+          properties: {
+            _id: { type: 'string', description: 'entity id' },
+            name: { type: 'string' },
+            surname: { type: 'string' }
+          }
+        }
+      }
     }
   }, controller.list)
 
@@ -18,6 +29,17 @@ async function routes (fastify, options) {
           id: {
             type: 'string',
             description: 'author id'
+          }
+        }
+      },
+      response: {
+        200: {
+          description: 'Successful response',
+          type: 'object',
+          properties: {
+            _id: { type: 'string', description: 'entity id' },
+            name: { type: 'string' },
+            surname: { type: 'string' }
           }
         }
       }
@@ -36,7 +58,16 @@ async function routes (fastify, options) {
     schema: {
       description: 'Add a new author',
       tags: ['author'],
-      body: bodyJsonSchema
+      body: bodyJsonSchema,
+      response: {
+        200: {
+          description: 'Successful response',
+          type: 'object',
+          properties: {
+            id: { type: 'string', description: 'entity id' }
+          }
+        }
+      }
     }
   }, controller.create)
 
@@ -50,6 +81,14 @@ async function routes (fastify, options) {
           id: {
             type: 'string',
             description: 'author id'
+          }
+        }
+      },
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            message: { type: 'string' }
           }
         }
       }
