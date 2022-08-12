@@ -1,6 +1,18 @@
 const request = require('supertest')
 const app = require('../server')
 
+describe('Wrong endpoint', () => {
+  it('endpoint not found', async () => {
+    await request
+      .agent(app)
+      .get('/test')
+      .expect((response) => {
+        expect(response.status).toBe(404)
+        expect(response.text).toContain('Unknown endpoint')
+      })
+  })
+})
+
 describe('Test front-end endpoints', () => {
   beforeAll(async () => {
     const Film = require('../models/film.model')

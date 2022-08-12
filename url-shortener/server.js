@@ -19,4 +19,8 @@ app.use(express.json())
 app.use('/', mainRoutes)
 app.use('/api', apiRoutes)
 
+app.use((req, res) => {
+  res.status(404).send('Unknown endpoint')
+})
+
 module.exports = app
