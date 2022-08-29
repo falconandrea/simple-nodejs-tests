@@ -8,7 +8,7 @@ Simple form for add a new film (title and year), and a list for show all films.
 
 Using:
 
-- Moongose/MongoDB
+- Mongoose/MongoDB
 - Express
 - EJS templating and TailwindCSS
 - Prettier and Eslint
@@ -20,7 +20,7 @@ Simple URL Shortener for shorten an url.
 
 Using:
 
-- Moongose/MongoDB
+- Mongoose/MongoDB
 - Express
 - EJS templating and TailwindCSS
 - Prettier and Eslint
@@ -32,7 +32,7 @@ Simple CRUD for manage Authors and Books with Fastify.
 
 Using:
 
-- Moongose/MongoDB
+- Mongoose/MongoDB
 - Fastify
 - Prettier and Eslint
 - Swagger documentation with Fastify plugin

@@ -2,7 +2,7 @@
 
 ![URL Shortener gif](https://raw.githubusercontent.com/falconandrea/simple-nodejs-tests/main/images/url-shortener.gif)
 
-- Moongose/MongoDB
+- Mongoose/MongoDB
 - Express
 - EJS templating and TailwindCSS
 - Prettier and Eslint

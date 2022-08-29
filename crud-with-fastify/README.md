@@ -2,7 +2,7 @@
 
 Simple CRUD for manage Authors and Books with Fastify.
 
-- Moongose/MongoDB
+- Mongoose/MongoDB
 - Fastify
 - Prettier and Eslint
 - Swagger documentation with Fastify plugin

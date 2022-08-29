@@ -2,7 +2,7 @@
 
 ![List films gif](https://raw.githubusercontent.com/falconandrea/simple-nodejs-tests/main/images/list-films.gif)
 
-- Moongose/MongoDB
+- Mongoose/MongoDB
 - Express
 - EJS templating and TailwindCSS
 - Prettier and Eslint
