@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose')
 const Model = require('../models/user.model')
 
 const list = async (req, res) => {
@@ -5,14 +6,14 @@ const list = async (req, res) => {
     '_id',
     'name',
     'surname',
-    'full_name'
+    'status'
   ])
   return res.json(result)
 }
 
 const create = async (req, res) => {
-  if (!req.body.name) return res.status(500).send('Missing name')
-  if (!req.body.surname) return res.status(500).send('Missing surname')
+  if (!req.body.name) return res.status(500).json({message: 'Missing name'})
+  if (!req.body.surname) return res.status(500).json({message: 'Missing surname'})
 
   const result = new Model(req.body)
   return result.save((err, data) => {
@@ -22,13 +23,14 @@ const create = async (req, res) => {
 }
 
 const remove = async (req, res) => {
-  const result = await Model.findById(req.params.id)
+  if(!mongoose.isValidObjectId(req.params.id)) return res.status(500).json({message: 'Item ID not valid'})
 
+  const result = await Model.findById(req.params.id)
   if (result) {
     await result.delete()
     return res.json({ message: 'Deleted' })
   }
-  return res.status(404).send('Item not found')
+  return res.status(404).json({message: 'Item not found'})
 }
 
 module.exports = {

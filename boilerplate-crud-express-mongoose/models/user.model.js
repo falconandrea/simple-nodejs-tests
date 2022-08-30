@@ -16,9 +16,4 @@ const UserSchema = new mongoose.Schema({
   updated: { type: Date, default: Date.now() }
 })
 
-// Example Virtual Field
-UserSchema.virtual('full_name').get(function () {
-  return `${this.name} ${this.surname}`
-})
-
 module.exports = mongoose.model('User', UserSchema)
