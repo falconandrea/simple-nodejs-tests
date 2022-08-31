@@ -2,7 +2,23 @@ const { default: mongoose } = require('mongoose')
 const Model = require('../models/user.model')
 
 const list = async (req, res) => {
-  const result = await Model.find({}).select([
+  const condition = {}
+  if (req.query.name) {
+    condition.name = { $regex: new RegExp(req.query.name), $options: 'i' }
+  }
+  if (req.query.surname) {
+    condition.surname = { $regex: new RegExp(req.query.surname), $options: 'i' }
+  }
+  if (req.query.status) {
+    condition.status =
+      req.query.status === true ||
+      req.query.status === 1 ||
+      req.query.status === '1'
+        ? 1
+        : 0
+  }
+
+  const result = await Model.find(condition).select([
     'id',
     'name',
     'surname',
@@ -22,7 +38,13 @@ const create = async (req, res) => {
   const result = new Model({
     name: req.body.name,
     surname: req.body.surname,
-    status: req.body.status ? req.body.status : false
+    status:
+      req.body.status &&
+      (req.body.status === true ||
+        req.body.status === '1' ||
+        req.body.status === 1)
+        ? 1
+        : false
   })
   return result.save((err, data) => {
     if (err) {
