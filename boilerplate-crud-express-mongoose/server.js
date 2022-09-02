@@ -12,8 +12,9 @@ app.use(express.json())
 
 app.use('/api/users', userRoutes)
 
-app.use((req, res) => {
-  res.status(404).send('Unknown endpoint')
+app.use((req, res, next) => {
+  res.status(404).json({ message: 'Unknown endpoint' })
+  next()
 })
 
 module.exports = app
