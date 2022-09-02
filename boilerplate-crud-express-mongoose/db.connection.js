@@ -10,15 +10,29 @@ if (process.env.NODE_ENV === 'production') {
   dbConnection = process.env.MONGO_URI
 }
 
-mongoose.connect(dbConnection, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+const connect = async () => {
+  await mongoose.connect(dbConnection, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+}
 
-const db = mongoose.connection
-db.on('error', console.error.bind(console, 'connection error: '))
-db.once('open', () => {
-  console.log('Connected db successfully')
-})
+module.exports.connectDb = async () => {
+  await connect().then(() => {
+    console.log('Connected to db')
+  })
+    .catch((error) => {
+      console.error(error.message)
+    })
+}
 
-module.exports = mongoose
+module.exports.dropAndCloseDb = async () => {
+  await connect().then(async () => {
+    await mongoose.connection.db.dropDatabase()
+    await mongoose.connection.close()
+    await mongoose.disconnect()
+  })
+    .catch((error) => {
+      console.error(error.message)
+    })
+}

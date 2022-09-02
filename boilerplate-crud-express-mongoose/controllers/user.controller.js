@@ -1,4 +1,4 @@
-const { default: mongoose } = require('mongoose')
+const mongoose = require('mongoose')
 const Model = require('../models/user.model')
 
 const list = async (req, res) => {
