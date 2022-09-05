@@ -2,6 +2,7 @@
 
 - Mongoose/MongoDB
 - Express
+- Nodemon
 - Prettier and Eslint
 - Jest for testing.
 

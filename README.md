@@ -37,3 +37,15 @@ Using:
 - Prettier and Eslint
 - Swagger documentation with Fastify plugin
 - Tap for testing.
+
+## [Boilerplate CRUD with Express and Mongoose](https://github.com/falconandrea/simple-nodejs-tests/tree/main/boilerplate-crud-express-mongoose)
+
+Simple Boilerplate CRUD with Express and Mongoose.
+
+Using:
+
+- Mongoose/MongoDB
+- Express
+- Nodemon
+- Prettier and Eslint
+- Jest for testing.
