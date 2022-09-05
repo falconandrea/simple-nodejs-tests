@@ -18,20 +18,22 @@ const connect = async () => {
 }
 
 module.exports.connectDb = async () => {
-  await connect().then(() => {
-    console.log('Connected to db')
-  })
+  await connect()
+    .then(() => {
+      console.log('Connected to db')
+    })
     .catch((error) => {
       console.error(error.message)
     })
 }
 
 module.exports.dropAndCloseDb = async () => {
-  await connect().then(async () => {
-    await mongoose.connection.db.dropDatabase()
-    await mongoose.connection.close()
-    await mongoose.disconnect()
-  })
+  await connect()
+    .then(async () => {
+      await mongoose.connection.db.dropDatabase()
+      await mongoose.connection.close()
+      await mongoose.disconnect()
+    })
     .catch((error) => {
       console.error(error.message)
     })

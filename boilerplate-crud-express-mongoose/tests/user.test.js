@@ -14,7 +14,7 @@ it('endpoint not found', async () => {
     .agent(app)
     .get('/api')
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(404)
       expect(data.message).toContain('Unknown endpoint')
@@ -27,7 +27,7 @@ it('add new user', async () => {
     .post('/api/users')
     .send({ name: 'Test', surname: 'User' })
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(200)
       expect(data.message).toContain('Created')
@@ -40,7 +40,7 @@ it('missing name field on create new user', async () => {
     .post('/api/users')
     .send({ name: 'Test' })
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(500)
       expect(data.message).toContain('Missing surname')
@@ -53,7 +53,7 @@ it('missing surname field on create new user', async () => {
     .post('/api/users')
     .send({ surname: 'Test' })
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(500)
       expect(data.message).toContain('Missing name')
@@ -65,7 +65,7 @@ it('get list of users', async () => {
     .agent(app)
     .get('/api/users')
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(200)
       expect(data).toHaveLength(1)
@@ -80,7 +80,7 @@ it('search Test user by name', async () => {
     .agent(app)
     .get('/api/users?name=Test')
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(200)
       expect(data).toHaveLength(1)
@@ -93,7 +93,7 @@ it('search Test user by surname', async () => {
     .agent(app)
     .get('/api/users?surname=User')
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(200)
       expect(data).toHaveLength(1)
@@ -106,7 +106,7 @@ it('search Test user by status', async () => {
     .agent(app)
     .get('/api/users?status=1')
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(200)
       expect(data).toHaveLength(0)
@@ -132,7 +132,7 @@ it('update user data', async () => {
           surname: 'Doe'
         })
         .expect('Content-Type', /json/)
-        .then(reply => {
+        .then((reply) => {
           const replyData = JSON.parse(reply.text)
           expect(reply.status).toBe(200)
           expect(replyData.message).toContain('Updated')
@@ -145,7 +145,7 @@ it('get by id', async () => {
     .agent(app)
     .get(`/api/users/${idFirstElement}`)
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(200)
       expect(data.name).toBe('John')
@@ -158,7 +158,7 @@ it('get by wrong id', async () => {
     .agent(app)
     .get('/api/users/630e44cfad30948ba1111111')
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(404)
       expect(data.message).toBe('Item not found')
@@ -170,7 +170,7 @@ it('get by not valid id', async () => {
     .agent(app)
     .get('/api/users/123')
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(500)
       expect(data.message).toBe('Item ID not valid')
@@ -182,7 +182,7 @@ it('try to update by not valid id', async () => {
     .agent(app)
     .put('/api/users/123')
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(500)
       expect(data.message).toBe('Item ID not valid')
@@ -195,7 +195,7 @@ it('try to update by wrong id', async () => {
     .put('/api/users/630e44cfad30948ba1111111')
     .send({ name: 'Wario' })
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(404)
       expect(data.message).toBe('Item not found')
@@ -207,7 +207,7 @@ it('try to delete by not valid id', async () => {
     .agent(app)
     .delete('/api/users/123')
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(500)
       expect(data.message).toBe('Item ID not valid')
@@ -219,7 +219,7 @@ it('try to delete by wrong id', async () => {
     .agent(app)
     .delete('/api/users/630e44cfad30948ba1111111')
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(404)
       expect(data.message).toBe('Item not found')
@@ -231,7 +231,7 @@ it('delete an item', async () => {
     .agent(app)
     .delete(`/api/users/${idFirstElement}`)
     .expect('Content-Type', /json/)
-    .then(response => {
+    .then((response) => {
       const data = JSON.parse(response.text)
       expect(response.status).toBe(200)
       expect(data.message).toBe('Deleted')
